@@ -13,6 +13,7 @@ import {
   removeRenderTarget,
   generateFilename,
   waitWithTimeout,
+  inlineComputedStyles,
 } from './pdfHelpers';
 import { calculatePageSlices, sliceCanvas, A4_WIDTH_PX, A4_HEIGHT_PX } from './pdfSlicing';
 
@@ -48,6 +49,9 @@ export async function exportInvoiceToPdf(
     // Clone the template element into render target
     const clonedElement = templateElement.cloneNode(true) as HTMLElement;
     renderTarget.appendChild(clonedElement);
+
+    // Inline computed styles to resolve oklch() → rgb() (html2canvas doesn't support oklch)
+    inlineComputedStyles(renderTarget);
 
     // Step 2: Wait for assets to load
     onProgress?.('Loading assets...');

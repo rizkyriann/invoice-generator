@@ -105,3 +105,70 @@ export async function waitWithTimeout<T>(
 
   return Promise.race([promise, timeoutPromise]);
 }
+
+/**
+ * Walk DOM tree and inline computed styles for every element.
+ * Replaces oklch() colors with rgb() equivalents using Canvas 2D.
+ * html2canvas v1.4.1 doesn't support oklch() color function.
+ */
+function oklchToRgb(oklchStr: string): string {
+  if (!oklchStr.startsWith('oklch(')) return oklchStr;
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return oklchStr;
+    ctx.fillStyle = oklchStr;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    canvas.width = 0;
+    canvas.height = 0;
+    return r === 0 && g === 0 && b === 0 && oklchStr !== 'oklch(0 0 0)' && oklchStr !== 'oklch(0 0 0 / 1)'
+      ? oklchStr
+      : `rgb(${r},${g},${b})`;
+  } catch {
+    return oklchStr;
+  }
+}
+
+export function inlineComputedStyles(root: HTMLElement): void {
+  const SKIP_PROPS = new Set([
+    'cssText', 'length', 'parentRule', 'clip', '-webkit-font-smoothing',
+    '-moz-osx-font-smoothing',
+  ]);
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, null);
+  const elements: Element[] = [];
+  let node: Node | null;
+  while ((node = walker.nextNode())) {
+    elements.push(node as Element);
+  }
+  elements.push(root);
+
+  for (const el of elements) {
+    const htmlEl = el as HTMLElement;
+    const computed = getComputedStyle(htmlEl);
+
+    for (let i = 0; i < computed.length; i++) {
+      const prop = computed[i];
+      if (SKIP_PROPS.has(prop)) continue;
+      const value = computed.getPropertyValue(prop);
+      if (!value || value === 'none' || value === 'normal') continue;
+      if (prop.includes('animation') || prop.includes('transition')) continue;
+
+      let finalValue = value;
+      if (typeof value === 'string' && value.includes('oklch(')) {
+        finalValue = value.replace(/oklch\([^)]+\)/g, (match) => oklchToRgb(match));
+      }
+
+      if (finalValue !== value) {
+        try {
+          htmlEl.style.setProperty(prop, finalValue);
+        } catch {
+          // skip
+        }
+      }
+    }
+  }
+}

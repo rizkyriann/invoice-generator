@@ -1,0 +1,222 @@
+/* Nintendo.com 2001 Design Tokens */
+/* Brushed-periwinkle console chrome aesthetic */
+
+:root {
+  /* Brand & Accent Colors */
+  --nintendo-red: #e60012;
+  --signal-orange: #f68d1f;
+  --amber: #ecab37;
+  --nav-gold: #e48600;
+  
+  /* Surface Colors - Periwinkle Chrome */
+  --canvas: #7a8aba;
+  --canvas-soft: #9fbee7;
+  --sky: #9fbee7;
+  --lavender: #acace7;
+  --ice: #c0d5e6;
+  --periwinkle: #8ba1d4;
+  --chrome-indigo: #3d4f97;
+  --muted-indigo: #60619c;
+  --platinum: #dedede;
+  --surface: #ffffff;
+  
+  /* Carbon Command Layer */
+  --carbon: #21242e;
+  --hairline: #5a5f8c;
+  
+  /* Text Colors */
+  --ink: #21242e;
+  --ink-soft: #3d4f97;
+  --on-primary: #ffffff;
+  
+  /* Page-Specific Accent Tints */
+  --systems-teal: #206479;
+  --games-red: #a7282b;
+  
+  /* Semantic */
+  --error: #e60012;
+  
+  /* Typography Scale */
+  --font-family-base: Arial, Helvetica, sans-serif;
+  --font-family-display: 'Arial Black', Arial, sans-serif;
+  
+  /* Font Sizes */
+  --font-size-display: 44px;
+  --font-size-hero-tagline: 15px;
+  --font-size-nav-link: 13px;
+  --font-size-ui-label: 11px;
+  --font-size-link: 12px;
+  --font-size-body: 12px;
+  --font-size-micro: 10px;
+  
+  /* Font Weights */
+  --font-weight-black: 900;
+  --font-weight-bold: 700;
+  --font-weight-normal: 400;
+  
+  /* Line Heights */
+  --line-height-tight: 1;
+  --line-height-snug: 1.1;
+  --line-height-comfortable: 1.3;
+  --line-height-relaxed: 1.4;
+  
+  /* Letter Spacing */
+  --letter-spacing-chrome: 0.5px;
+  --letter-spacing-none: 0;
+  
+  /* Border Radius Scale */
+  --rounded-none: 0px;
+  --rounded-xs: 2px;
+  --rounded-sm: 4px;
+  --rounded-md: 6px;
+  --rounded-lg: 10px;
+  --rounded-full: 9999px;
+  
+  /* Spacing Scale */
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-section: 48px;
+  
+  /* Component Heights */
+  --height-nav-bar: 28px;
+  --height-search-field: 20px;
+  --height-text-input: 20px;
+  --height-select: 24px;
+  
+  /* Bevel Effects */
+  --bevel-top-highlight: rgba(255, 255, 255, 0.3);
+  --bevel-bottom-shadow: var(--chrome-indigo);
+}
+
+/* Utility Classes */
+.nintendo-canvas {
+  background-color: var(--canvas);
+}
+
+.nintendo-carbon {
+  background-color: var(--carbon);
+  color: var(--on-primary);
+}
+
+.nintendo-surface {
+  background-color: var(--surface);
+  color: var(--ink);
+}
+
+.nintendo-platinum {
+  background-color: var(--platinum);
+  color: var(--ink);
+}
+
+/* Beveled Panel Effect */
+.nintendo-panel {
+  background-color: var(--canvas);
+  border-top: 2px solid var(--bevel-top-highlight);
+  border-bottom: 2px solid var(--bevel-bottom-shadow);
+}
+
+.nintendo-panel-raised {
+  background-color: var(--periwinkle);
+  border-top: 2px solid var(--bevel-top-highlight);
+  border-bottom: 2px solid var(--bevel-bottom-shadow);
+}
+
+.nintendo-panel-inset {
+  background-color: var(--platinum);
+  border-top: 2px solid var(--chrome-indigo);
+  border-bottom: 2px solid var(--bevel-top-highlight);
+}
+
+/* Typography Styles */
+.nintendo-display {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-none);
+  text-transform: uppercase;
+}
+
+.nintendo-nav-link {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-nav-link);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-chrome);
+  text-transform: uppercase;
+}
+
+.nintendo-ui-label {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-ui-label);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-chrome);
+  text-transform: uppercase;
+}
+
+.nintendo-body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.nintendo-link {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-link);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+.nintendo-micro {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-comfortable);
+  letter-spacing: var(--letter-spacing-none);
+}
+
+/* Button Styles */
+.nintendo-button-primary {
+  background-color: var(--amber);
+  color: var(--carbon);
+  border-radius: var(--rounded-xs);
+  padding: var(--spacing-md);
+  border-top: 2px solid var(--bevel-top-highlight);
+  border-bottom: 2px solid var(--nav-gold);
+}
+
+.nintendo-button-primary:hover {
+  background-color: var(--nav-gold);
+}
+
+.nintendo-button-submit {
+  background-color: var(--signal-orange);
+  color: var(--on-primary);
+  border-radius: var(--rounded-xs);
+  padding: var(--spacing-lg);
+  border-top: 2px solid var(--bevel-top-highlight);
+  border-bottom: 2px solid #d67610;
+}
+
+.nintendo-button-secondary {
+  background-color: var(--carbon);
+  color: var(--on-primary);
+  border-radius: var(--rounded-none);
+  padding: var(--spacing-md);
+}
+
+/* Halftone Dot Texture for Carbon Elements */
+.nintendo-carbon-texture {
+  background-color: var(--carbon);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+}

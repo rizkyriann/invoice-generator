@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import BusinessSection from '../features/invoice-form/BusinessSection';
 import ClientSection from '../features/invoice-form/ClientSection';
 import InvoiceDetailsSection from '../features/invoice-form/InvoiceDetailsSection';
@@ -8,17 +8,13 @@ import ExtrasSection from '../features/invoice-form/ExtrasSection';
 import DraftActions from '../features/invoice-form/DraftActions';
 import TemplateSelector from '../features/template-selector/TemplateSelector';
 import InvoicePreview from '../features/invoice-preview/InvoicePreview';
-import PDFButton from '../features/pdf-export/PDFButton';
 import PrintButton from '../features/pdf-export/PrintButton';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 
 export default function InvoiceGeneratorPage() {
   const [showPreview, setShowPreview] = useState(false);
-  const pdfButtonRef = useRef<HTMLButtonElement>(null);
 
-  useKeyboardShortcuts(() => {
-    pdfButtonRef.current?.click();
-  });
+  useKeyboardShortcuts(() => {});
 
   return (
     <div className="flex h-screen flex-col bg-surface-secondary lg:flex-row">
@@ -90,18 +86,19 @@ export default function InvoiceGeneratorPage() {
           </div>
 
           <div className="space-y-4">
-            {/* Export Actions */}
-            <div className="rounded-xl border border-border bg-surface p-6 shadow-sm">
-              <h2 className="mb-4 text-lg font-semibold text-text">Export</h2>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <PDFButton />
+            <div className="nintendo-panel rounded-[var(--rounded-md)] p-[var(--spacing-md)]">
+              <h2 className="nintendo-ui-label text-[var(--ink)] mb-[var(--spacing-md)]">EXPORT</h2>
+              <div className="flex flex-col gap-[var(--spacing-md)] sm:flex-row">
                 <PrintButton />
               </div>
             </div>
+          </div>
 
+          <div className="mt-6">
             <TemplateSelector />
+          </div>
 
-            <div className="rounded-xl border border-border bg-surface shadow-sm">
+          <div className="mt-6 rounded-xl border border-border bg-surface shadow-sm">
               <div className="border-b border-border bg-surface-secondary px-6 py-4">
                 <h2 className="text-lg font-semibold text-text">Live Preview</h2>
                 <p className="text-xs text-text-secondary">
@@ -112,7 +109,6 @@ export default function InvoiceGeneratorPage() {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }
