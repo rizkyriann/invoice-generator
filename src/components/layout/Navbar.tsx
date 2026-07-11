@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import ThemeSwitcher from './ThemeSwitcher.tsx';
 
 export default function Navbar() {
   return (
@@ -8,10 +7,7 @@ export default function Navbar() {
         Invoice Generator
       </Link>
       <div className="flex items-center gap-4">
-        <Link
-          to="/app"
-          className="text-sm text-text-secondary transition-colors hover:text-text"
-        >
+        <Link to="/app" className="text-sm text-text-secondary transition-colors hover:text-text">
           Create Invoice
         </Link>
         <Link
@@ -20,13 +16,9 @@ export default function Navbar() {
         >
           Settings
         </Link>
-        <Link
-          to="/about"
-          className="text-sm text-text-secondary transition-colors hover:text-text"
-        >
+        <Link to="/about" className="text-sm text-text-secondary transition-colors hover:text-text">
           About
         </Link>
-        <ThemeSwitcher />
       </div>
     </nav>
   );
