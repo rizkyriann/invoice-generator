@@ -72,10 +72,10 @@ const createEmptyInvoice = (): Invoice => ({
 
 export const useInvoiceStore = create<InvoiceStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       invoice: createEmptyInvoice(),
-      past: [],
-      future: [],
+      past: [] as Invoice[],
+      future: [] as Invoice[],
 
       updateBusiness: (business) =>
         set((state) => ({
@@ -229,13 +229,11 @@ export const useInvoiceStore = create<InvoiceStore>()(
         }),
 
       canUndo: () => {
-        const state = useInvoiceStore.getState();
-        return state.past.length > 0;
+        return get().past.length > 0;
       },
 
       canRedo: () => {
-        const state = useInvoiceStore.getState();
-        return state.future.length > 0;
+        return get().future.length > 0;
       },
     }),
     {
