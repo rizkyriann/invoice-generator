@@ -15,7 +15,7 @@ import {
   waitWithTimeout,
   inlineComputedStyles,
 } from './pdfHelpers';
-import { calculatePageSlices, sliceCanvas, A4_WIDTH_PX, A4_HEIGHT_PX } from './pdfSlicing';
+import { calculatePageSlices, sliceCanvas, A4_WIDTH_PX } from './pdfSlicing';
 
 export interface PdfExportOptions {
   onProgress?: (message: string) => void;

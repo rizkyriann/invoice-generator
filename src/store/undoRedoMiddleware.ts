@@ -1,5 +1,3 @@
-import { create } from 'zustand';
-
 interface HistoryEntry<T> {
   state: T;
   timestamp: number;
@@ -26,7 +24,7 @@ const MAX_HISTORY_SIZE = 30;
  */
 export function undoRedoMiddleware<T extends object>(
   config: (set: any, get: any) => T,
-  options: { label?: string } = {}
+  _options: { label?: string } = {}
 ) {
   return (set: any, get: any) => {
     const initialState = config(set, get);

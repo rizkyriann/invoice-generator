@@ -16,7 +16,7 @@ export async function preloadImages(node: HTMLElement): Promise<void> {
       return; // Already loaded
     }
 
-    const promise = new Promise<void>((resolve, reject) => {
+    const promise = new Promise<void>((resolve) => {
       const tempImg = new Image();
       tempImg.onload = () => resolve();
       tempImg.onerror = () => resolve(); // Resolve even on error to not block

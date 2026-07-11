@@ -26,7 +26,7 @@ export default function InvoiceDetailsSection() {
     return () => clearTimeout(handler);
   }, [localDetails, updateInvoiceDetails]);
 
-  const handlePaymentTermsPreset = (terms: string, days: number) => {
+  const handlePaymentTermsPreset = (terms: string, _days: number) => {
     const newDueDate = calculateDueDate(localDetails.issueDate, terms);
     setLocalDetails({
       ...localDetails,

@@ -1,5 +1,5 @@
 import type { InvoiceItem, Discount, Tax, InvoiceTotalsInputs } from '../types/invoice.types';
-import { add, subtract, multiply, percentage, fromCents, toCents } from './currency';
+import { add, subtract, multiply, percentage } from './currency';
 
 /**
  * Calculate the total for a single invoice item

@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useInvoiceStore } from '../../store/invoiceStore';
 import { TEMPLATE_COMPONENTS } from '../../templates/registry';
 import type { TemplateComponent } from '../../templates/registry';
