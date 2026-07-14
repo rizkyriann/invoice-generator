@@ -11,9 +11,15 @@ interface ToastProps {
 }
 
 const typeStyles: Record<ToastType, string> = {
-  success: 'bg-success-light border-success text-green-800',
-  error: 'bg-danger-light border-danger text-red-800',
-  info: 'bg-primary-light border-primary text-indigo-800',
+  success: 'border-l-4 border-l-success',
+  error: 'border-l-4 border-l-danger',
+  info: 'border-l-4 border-l-primary',
+};
+
+const iconStyles: Record<ToastType, string> = {
+  success: 'text-success',
+  error: 'text-danger',
+  info: 'text-primary',
 };
 
 const iconMap: Record<ToastType, typeof CheckCircleIcon> = {
@@ -38,13 +44,13 @@ export default function Toast({
   return (
     <div
       role="alert"
-      className={`flex items-center gap-3 rounded-lg border px-4 py-3 shadow-lg ${typeStyles[type]}`}
+      className={`flex items-center gap-3 rounded-lg border border-border bg-surface px-4 py-3 text-text shadow-lg ${typeStyles[type]}`}
     >
-      <Icon className="h-5 w-5 shrink-0" />
+      <Icon className={`h-5 w-5 shrink-0 ${iconStyles[type]}`} />
       <p className="flex-1 text-sm font-medium">{message}</p>
       <button
         onClick={onClose}
-        className="rounded p-0.5 transition-colors hover:opacity-70"
+        className="rounded p-0.5 text-text-tertiary transition-colors hover:text-text"
         aria-label="Dismiss"
       >
         <XMarkIcon className="h-4 w-4" />

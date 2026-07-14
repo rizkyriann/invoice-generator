@@ -8,4 +8,5 @@ export { default as Checkbox } from './Checkbox.tsx';
 export { default as Toggle } from './Toggle.tsx';
 export { default as Modal } from './Modal.tsx';
 export { default as Toast } from './Toast.tsx';
+export { default as ToastContainer } from './ToastContainer.tsx';
 export { default as Tooltip } from './Tooltip.tsx';

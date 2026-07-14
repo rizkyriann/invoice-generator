@@ -9,6 +9,7 @@ import DraftActions from '../features/invoice-form/DraftActions';
 import TemplateSelector from '../features/template-selector/TemplateSelector';
 import InvoicePreview from '../features/invoice-preview/InvoicePreview';
 import PrintButton from '../features/pdf-export/PrintButton';
+import PDFButton from '../features/pdf-export/PDFButton';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
 
 export default function InvoiceGeneratorPage() {
@@ -17,7 +18,7 @@ export default function InvoiceGeneratorPage() {
   useKeyboardShortcuts(() => {});
 
   return (
-    <div className="flex h-screen flex-col bg-surface-secondary lg:flex-row">
+    <div className="flex h-[calc(100vh-4rem)] flex-col bg-surface-secondary lg:flex-row">
       {/* Left Side - Form */}
       <div className={`w-full overflow-y-auto lg:w-1/2 ${showPreview ? 'hidden lg:block' : 'block'}`}>
         <div className="mx-auto max-w-3xl px-4 py-8">
@@ -86,9 +87,12 @@ export default function InvoiceGeneratorPage() {
           </div>
 
           <div className="space-y-4">
-            <div className="nintendo-panel rounded-[var(--rounded-md)] p-[var(--spacing-md)]">
-              <h2 className="nintendo-ui-label text-[var(--ink)] mb-[var(--spacing-md)]">EXPORT</h2>
-              <div className="flex flex-col gap-[var(--spacing-md)] sm:flex-row">
+            <div className="rounded-xl border border-border bg-surface p-6 shadow-sm">
+              <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">
+                Export
+              </h2>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <PDFButton />
                 <PrintButton />
               </div>
             </div>
